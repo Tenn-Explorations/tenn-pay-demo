@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Demo</title>
+  </head>
+  <body>
+
+    <h2>💸 Demo of how to pay with Tenn</h2>
+
+
+    <div>
+
+      <label>Phone Number : </label>
+      <input id="phone" type="text" pattern="+\d">
+
+      <br />
+      <br />
+
+      <label>Amount : </label>
+      <input id="amount" type="text" pattern="+\d">
+
+      <br/>
+      <br/>
+      <button onclick="initatePayment()">Pay Now 😉</button>
+
+    </div>
+
+      <br/>
+      <div id="loading"></div>
+      <br/>
+
+    <code>
+      Source Code 🔗: <a href="https://github.com/Tenn-Explorations/tenn-pay-demo">https://github.com/Tenn-Explorations/tenn-pay-demo</a>
+    </code>
+
+
+    <div id="addStuffHere"></div>
+
+
+  </body>
+
+  <script src="pay.js"></script>
+  <script defer>
+
+    function customCallback(transactionMetadata) {
+      document.getElementById("addStuffHere").innerHTML = `
+        <img src="https://i.giphy.com/media/ORjfgiG9ZtxcQQwZzv/giphy.webp"/>
+        <h1>💸 Payment Webhook</h1>
+        <pre>
+            ${JSON.stringify(transactionMetadata, null, 2)}
+        </pre>
+
+<pre>
+👀 This is all the code you need to add to you platform
+
+PayWithTenn(amount, phoneNumber, customCallback).then((trackingInfo) => {
+  console.log(trackingInfo);
+});
+</pre>
+
+        <p> Lets make online payments seamless together 🤝
+          <br/>
+          <br/>
+          You can call me <a href="tel:0759955563"> 0759955563 </a>
+          <br/>
+          Email me at
+          <a href="mailto:tennexplorations@gmail.com">tennexplorations@gmail.com</a>
+          To intergrate
+        </p>
+      `;
+    }
+
+    function initatePayment(){
+      let phoneNumber = document.getElementById("phone").value
+      let loading = document.getElementById("loading").innerHTML = "<p> Sending prompt To Phone ... </p>"
+      let amount = Number(document.getElementById("amount").value)
+
+      PayWithTenn(amount, phoneNumber, customCallback).then((successInfo) => {
+        console.log(successInfo);
+      });
+    }
+
+  </script>
+</html>
