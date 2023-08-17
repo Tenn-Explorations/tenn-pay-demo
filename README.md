@@ -15,7 +15,7 @@ PayWithTenn(amount, phoneNumber, customCallback).then((trackingInfo) => {
 ### Contact US          
 Email : <a href="mailto:tennexplorations@gmail.com">tennexplorations@gmail.com</a>
 <br/>
-Phone Number : <a href="tel:0759955563"> 0759955563 </a>
+Phone Number : <a href="+tel:0759955563"> 0759955563 </a>
 
 ### SDKs
 We are hard at work to add SDK's for 
